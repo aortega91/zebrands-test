@@ -21,6 +21,7 @@ function NavBarContainer({ children }: {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <div className="flex-shrink-0">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   className="h-8 w-8 cursor-pointer"
                   src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"

@@ -19,7 +19,9 @@
   "rules": {
     "react/jsx-filename-extension": "off",
     "react/react-in-jsx-scope": "off",
-    "no-extraneous-dependencies": "off",
-    "import/extensions": "off"
+    "import/no-extraneous-dependencies": "off",
+    "import/extensions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off"
   }
 }

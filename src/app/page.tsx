@@ -9,6 +9,7 @@ export default function Home() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(setScreenTitle(SCREEN_TITLES.HOME));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
