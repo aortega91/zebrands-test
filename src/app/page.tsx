@@ -7,13 +7,17 @@ import { setScreenTitle } from '@/src/lib/features/navigation/navigationSlice';
 import { PRIMARY_COLOR, SCREEN_TITLES } from '@/src/utils/constants';
 import { useAppDispatch } from '@/src/lib/hooks';
 import Image from 'next/image';
+import useWindowSize from '@/src/utils/hooks/useWindowSize';
 
 export default function Home() {
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(setScreenTitle(SCREEN_TITLES.HOME));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const { height, width } = useWindowSize();
 
   return (
     <div className="h-full">
@@ -25,8 +29,8 @@ export default function Home() {
           className="rounded-full flex w-1/2 h-1/2"
           src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
           alt="home image"
-          width={screen.width / 2}
-          height={screen.height / 2}
+          width={(width || 100) / 2}
+          height={(height || 100) / 2}
         />
 
         <p className="text-4xl text-center">Buscador GitHub</p>
