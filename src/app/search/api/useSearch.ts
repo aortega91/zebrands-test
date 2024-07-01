@@ -34,6 +34,7 @@ export default function useSearch(queryText: string, searchType: InputSearchType
   const onQueryFinish = () => { setIsLoading(false); };
 
   const searchQuery = () => {
+    setIsLoading(true);
     fetch(
       `${GITHUB_API_BASE_URL}search/${searchType}?q=${encodeURIComponent(queryText)}&per_page=${ITEMS_PER_PAGE}&page=${currentPage}`,
       {
