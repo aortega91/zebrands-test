@@ -115,15 +115,21 @@ export default function UserCard({ user }: TUserCardProps) {
           <div
             className="flex flex-row flex-wrap text-justify gap-2 text-center font-semibold"
           >
+            {userFollowers && (
             <div>
               {`Seguidores: ${userFollowers}`}
             </div>
+            )}
+            {userFollowing && (
             <div>
               {`Siguiendo: ${userFollowing}`}
             </div>
+            )}
+            {userRepos && (
             <div>
               {`Repositorios: ${userRepos}`}
             </div>
+            )}
           </div>
         </div>
 

@@ -1,6 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import { PRIMARY_COLOR } from '@/src/utils/constants';
 
 export default function GoBackButton() {
   const router = useRouter();
@@ -13,7 +14,7 @@ export default function GoBackButton() {
     <button
       type="submit"
       style={{
-        backgroundColor: '#6466E9',
+        backgroundColor: PRIMARY_COLOR,
       }}
       className="rounded-full flex items-center text-gray-100 px-3 py-2 w-fit-content h-fit-content"
       onClick={goBack}

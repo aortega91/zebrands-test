@@ -14,7 +14,8 @@ export default function UserSearch() {
   const { searchText } = useSearchData();
 
   const {
-    /*    isLoading,
+    isLoading,
+    /*
     isError, */
     searchResultItems,
     totalItems,
@@ -42,11 +43,17 @@ export default function UserSearch() {
         items={searchResultItems}
         totalItems={totalItems}
         page={currentPage}
+        isLoading={isLoading}
         totalPages={totalPages}
         onSelectedPage={selectPage}
         onNextPage={getNextPage}
         onPreviousPage={getPreviousPage}
-        renderItem={(item) => <UserCard user={item} />}
+        renderItem={(item) => (
+          <UserCard
+            key={item.login}
+            user={item}
+          />
+        )}
       />
 
     </div>

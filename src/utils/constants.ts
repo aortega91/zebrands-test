@@ -1,3 +1,5 @@
+export const PRIMARY_COLOR = '#6466E9';
+
 export type SCREENS = {
   HOME: string;
   USER_SEARCH: string;

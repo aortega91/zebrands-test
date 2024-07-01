@@ -1,9 +1,10 @@
+import { PRIMARY_COLOR } from '@/src/utils/constants';
+
 type TPageButton = {
   page: number;
   isSelected: boolean;
   // eslint-disable-next-line no-unused-vars
   onSelect: (page: number) => void;
-
 }
 
 export default function PageButton({ page, isSelected, onSelect }: TPageButton) {
@@ -21,7 +22,8 @@ export default function PageButton({ page, isSelected, onSelect }: TPageButton) 
     <a
       key={page}
       href="#"
-      className={`${isSelected ? 'bg-indigo-600 text-white bg-gray-100' : ''} relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-10 focus:z-20 focus:outline-offset-0 `}
+      style={isSelected ? { backgroundColor: PRIMARY_COLOR, color: 'white' } : {}}
+      className="relative inline-flex items-center px-4 py-2 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-10 focus:z-20 focus:outline-offset-0 "
       onClick={onClick}
     >
       {page}
