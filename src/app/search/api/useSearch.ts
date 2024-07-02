@@ -1,5 +1,8 @@
+/* eslint-disable camelcase */
 import { GITHUB_API_BASE_URL, InputSearchType } from '@/src/utils/constants';
 import { useEffect, useState } from 'react';
+import { TUser } from '@/src/app/components/UserCard';
+import { TRepository } from '@/src/app/components/RepositoryCard';
 
 const ITEMS_PER_PAGE = 10;
 
@@ -12,7 +15,7 @@ export default function useSearch(queryText: string, searchType: InputSearchType
 
   const [totalItems, setTotalElements] = useState(0);
 
-  const [searchResultItems, setSearchResultItems] = useState<Array<Object>>([]);
+  const [searchResultItems, setSearchResultItems] = useState<Array<TUser | TRepository>>([]);
 
   useEffect(() => {
     if (totalItems > 0) {
@@ -21,12 +24,13 @@ export default function useSearch(queryText: string, searchType: InputSearchType
     }
   }, [totalItems]);
 
-  const setSearchData = (queryResponse: { items: Array<Object>, total_count: number }) => {
-    // eslint-disable-next-line camelcase
+  const setSearchData = (queryResponse: { items: Array<TUser | TRepository>,
+    total_count: number }) => {
     const { items, total_count } = queryResponse;
 
-    setTotalElements(total_count);
-    setSearchResultItems(items);
+    // set default value in case of query error
+    setTotalElements(total_count || 0);
+    setSearchResultItems(items || []);
   };
 
   const onQueryError = () => { setIsError(true); };

@@ -7,7 +7,7 @@ import { SCREEN_TITLES, SEARCH_TYPES } from '@/src/utils/constants';
 import useSearch from '@/src/app/search/api/useSearch';
 import { useSearchData } from '@/src/lib/features/search/searchSlice';
 import SearchResultsContainer from '@/src/app/components/SearchResultsContainer';
-import UserCard from '@/src/app/components/UserCard';
+import UserCard, { TUser } from '@/src/app/components/UserCard';
 
 export default function UserSearch() {
   const dispatch = useAppDispatch();
@@ -15,8 +15,6 @@ export default function UserSearch() {
 
   const {
     isLoading,
-    /*
-    isError, */
     searchResultItems,
     totalItems,
     currentPage,
@@ -50,8 +48,8 @@ export default function UserSearch() {
         onPreviousPage={getPreviousPage}
         renderItem={(item) => (
           <UserCard
-            key={item.login}
-            user={item}
+            key={(item as TUser).login}
+            user={item as TUser}
           />
         )}
       />

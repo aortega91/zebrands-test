@@ -15,8 +15,6 @@ type TUserCardProps = {
 }
 
 export default function UserCard({ user }: TUserCardProps) {
-  const [userFollowers, setUserFollowers] = useState(0);
-  const [userFollowing, setUserFollowing] = useState(0);
   const [userRepos, setUserRepos] = useState(0);
 
   const [imageLoadError, setImageLoadError] = useState(false);
@@ -26,42 +24,12 @@ export default function UserCard({ user }: TUserCardProps) {
   );
 
   useEffect(() => {
-    fetchRemoteData(user.followers_url).then((data) => {
-      setUserFollowers(data.length);
-    });
-    fetchRemoteData(user.following_url.split('{/other_user}')[0]).then((data) => {
-      setUserFollowing(data.length);
-    });
     fetchRemoteData(user.repos_url).then((data) => {
       setUserRepos(data.length);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  /*
-  * {
-    "login": "aortega",
-    "id": 668917,
-    "node_id": "MDQ6VXNlcjY2ODkxNw==",
-    "avatar_url": "https://avatars.githubusercontent.com/u/668917?v=4",
-    "gravatar_id": "",
-    "url": "https://api.github.com/users/aortega",
-    "html_url": "https://github.com/aortega",
-    "followers_url": "https://api.github.com/users/aortega/followers",
-    "following_url": "https://api.github.com/users/aortega/following{/other_user}",
-    "gists_url": "https://api.github.com/users/aortega/gists{/gist_id}",
-    "starred_url": "https://api.github.com/users/aortega/starred{/owner}{/repo}",
-    "subscriptions_url": "https://api.github.com/users/aortega/subscriptions",
-    "organizations_url": "https://api.github.com/users/aortega/orgs",
-    "repos_url": "https://api.github.com/users/aortega/repos",
-    "events_url": "https://api.github.com/users/aortega/events{/privacy}",
-    "received_events_url": "https://api.github.com/users/aortega/received_events",
-    "type": "User",
-    "site_admin": false,
-    "score": 1
-}
-  *
-  * */
   return (
     <div
       className="rounded-md shadow bg-white p-4 mb-4 w-full"
@@ -113,18 +81,8 @@ export default function UserCard({ user }: TUserCardProps) {
           </a>
 
           <div
-            className="flex flex-row flex-wrap text-justify gap-2 text-center font-semibold"
+            className="flex flex-row flex-wrap gap-2 text-center font-semibold"
           >
-            {userFollowers && (
-            <div>
-              {`Seguidores: ${userFollowers}`}
-            </div>
-            )}
-            {userFollowing && (
-            <div>
-              {`Siguiendo: ${userFollowing}`}
-            </div>
-            )}
             {userRepos && (
             <div>
               {`Repositorios: ${userRepos}`}

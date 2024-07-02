@@ -2,10 +2,11 @@
 import React, { useEffect, useState } from 'react';
 import PageButton from '@/src/app/components/PageButton';
 import { TUser } from '@/src/app/components/UserCard';
+import { TRepository } from '@/src/app/components/RepositoryCard';
 import { PRIMARY_COLOR } from '@/src/utils/constants';
 
 type TSearchResultsContainerProps = {
-  items: any[];
+  items: Array<(TUser | TRepository)>;
   page: number;
   isLoading: boolean;
   totalPages: number;
@@ -16,7 +17,7 @@ type TSearchResultsContainerProps = {
   onPreviousPage: () => void;
 
   // eslint-disable-next-line no-unused-vars
-  renderItem: (item: TUser) => React.ReactNode;
+  renderItem: (item: (TUser | TRepository)) => React.ReactNode;
 }
 
 const INITIAL_LEFT_SIDE_PAGES = [1, 2, 3];
@@ -230,6 +231,5 @@ export default function SearchResultsContainer({
       </>
       )}
     </div>
-
   );
 }
